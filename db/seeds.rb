@@ -2,9 +2,11 @@ require 'net/http'
 require 'uri'
 require 'digest/md5'
 
-resp = Net::HTTP.get(URI('https://fcsctf.ru/api/v1/scoreboard'))
-resp = JSON.parse(resp).with_indifferent_access
-total_pts = resp[:data].inject(0) { |acc,cur| acc += cur[:score].to_i ; acc }
+# resp = Net::HTTP.get(URI('https://fcsctf.ru/api/v1/scoreboard'))
+# resp = JSON.parse(resp).with_indifferent_access
+# total_pts = resp[:data].inject(0) { |acc,cur| acc += cur[:score].to_i ; acc }
+
+total_pts = 1000
 
 items = [
   {
@@ -66,10 +68,10 @@ end
 
 User.create(team_name: 'admin', password: '1d57d92b9b20084ca610b7624c1ffc19', balance: 9999)
 
-salt = '8b512e52b5894b0a1749ac8290ca89d7'
+# salt = '8b512e52b5894b0a1749ac8290ca89d7'
 
-resp[:data].each do |team|
-  password = Digest::MD5.hexdigest("#{salt}#{team[:name]}#{salt}")
-  puts "#{team[:name]} => #{password}"
-  User.create({ team_name: team[:name], balance: team[:score], password: password })
-end
+# resp[:data].each do |team|
+#   password = Digest::MD5.hexdigest("#{salt}#{team[:name]}#{salt}")
+#   puts "#{team[:name]} => #{password}"
+#   User.create({ team_name: team[:name], balance: team[:score], password: password })
+# end
