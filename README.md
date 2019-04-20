@@ -1,24 +1,16 @@
-# README
+FCSCTF Store is the real-time store developed for FCSCTF event held in Faculty of Computer Science in Omsk State University.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+It requires:
+ruby version  >= 2.5.1
+rails version >= 5.2
+postgreSQL
+redis-server
 
-Things you may want to cover:
+It can be easily deployed using a set of commands:
+- docker-compose up -d --build
+- docker-compose run web rake db:seed
 
-* Ruby version
+Configuration:
+Items for sale, users, price policies can be set in db/seeds.rb
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+It uses redis + actioncable for real-time updates and holds 5 concurrent connections per active user page
