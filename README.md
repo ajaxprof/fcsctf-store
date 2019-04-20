@@ -8,9 +8,15 @@ redis-server
 
 It can be easily deployed using a set of commands:
 - docker-compose up -d --build
-- docker-compose run web rake db:seed
+- docker-compose run web rake db:setup
 
 Configuration:
 Items for sale, users, price policies can be set in db/seeds.rb
 
 It uses redis + actioncable for real-time updates and holds 5 concurrent connections per active user page
+
+Bootstrap 4 for UI
+jQuery for updates originating from websockets written in CoffeeScript
+
+Preview:
+https://ibb.co/ZNFgXzG
