@@ -1,0 +1,12 @@
+<div class="container mb-5">
+  <br>
+  <h1>Transactions</h1>
+  <br>
+  <ul class="list-group">
+    <% @transactions.each do |transaction| %>
+      <li class="list-group-item list-group-item-info">
+        <%= transaction.user.team_name %> => <%= transaction.quantity %>x <%= transaction.item.title %>
+      </li>
+    <% end %>
+  </ul>
+</div>

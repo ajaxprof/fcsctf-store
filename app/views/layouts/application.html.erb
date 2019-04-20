@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FCSCTF Store</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= alertify_flash %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAvskAAHmABAAMKnoA8f8AAAxWsABjWgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZmAAAAAAAABhYAAAAAAAAGZQAABmAAAAADUAZiYAAAAAA1YiYAAAAAAAYmYAAAAAAAYmFCAAAAAABiZBQgAAAABiYCQUIAAAAGYAAkFCAAAAAAAAJBQgAAAAAAACQUIAAAAAAAAkFCAAAAAAAAJBQgAAAAAAACQSAAAAAAAAAiIf/wAAH/8AAA8/AADEPwAA4H8AAPD/AADgfwAA4D8AAMQfAADODwAA/wcAAP+DAAD/wQAA/+AAAP/wAAD/+AAA" rel="icon" type="image/x-icon" />
+  </head>
+
+  <body>
+    <div>
+      <% if user_signed_in? %>
+        <nav class="navbar navbar-dark bg-dark sticky-top">
+          <div class="container">
+            <div class="d-flex flex-direction-row justify-content-space-between align-items-center">
+              <%= link_to '0xFCSCTF STORE', root_path, class: 'navbar-nav m-2 mr-3 ml-3' %>
+              <%= link_to 'Transactions', transactions_path, class: 'navbar-nav m-2 mr-3 ml-3' %>
+            </div>
+            <div class="balance-container">Balance : <span id="balance"><%= current_user.balance %></span> PTS</div>
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+          </div>
+        </nav>
+      <% end %>
+      <div class="container">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>
